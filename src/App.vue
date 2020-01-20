@@ -1,60 +1,33 @@
 <template>
-  <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+    <v-card
+    color="grey lighten-4"
+    flat
+    height="200px"
+    tile
+  >
+    <v-navigation-drawer app temporary></v-navigation-drawer>
+      <v-toolbar dark color="primary">
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-toolbar-title>Add Aplication</v-toolbar-title>
 
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn depressed large>Link One</v-btn>
+          <v-btn depressed large>Link Two</v-btn>
+          <v-btn depressed large>Link Three</v-btn>
+        </v-toolbar-items>
+    </v-toolbar>
     <v-content>
-      <HelloWorld/>
+     <!--  <router-view></router-view> -->
     </v-content>
-  </v-app>
+  </v-card>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+//import HelloWorld from './components/HelloWorld';
 
 export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
+  
 };
 </script>
