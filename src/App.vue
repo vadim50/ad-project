@@ -8,7 +8,7 @@
         <v-list-item link
         v-for="link of links"
         :key="link.title"
-        :href="link.url"
+        :to="link.url"
         >
           <v-list-item-action>
             <v-icon>{{ link.icon }}</v-icon>
@@ -34,7 +34,7 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"/>
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Ad</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
       <v-btn depressed
@@ -42,7 +42,7 @@
         x-large
         v-for="link in links"
         :key="link.title"
-        v-bind:href="link.url"
+        v-bind:to="link.url"
         >
         <v-icon class="material-icons" left>{{ link.icon }}</v-icon>
         {{ link.title }}
@@ -51,7 +51,8 @@
     </v-app-bar>
 
     <v-content>
-      <v-container
+      <router-view></router-view>
+      <!-- <v-container
         class="fill-height"
         fluid
       >
@@ -59,6 +60,7 @@
           align="center"
           justify="center"
         >
+        
           <v-col class="text-center">
             <v-tooltip left>
               <template v-slot:activator="{ on }">
@@ -91,7 +93,7 @@
             </v-tooltip>
           </v-col>
         </v-row>
-      </v-container>
+      </v-container> -->
     </v-content>
     <v-footer
       color="primary"
@@ -107,14 +109,17 @@
     props: {
       source: String,
     },
+    name: 'App',
     data: () => ({
       drawer: null,
       links: [
+        {title: 'Home',        icon: 'lock',            url: '/'},
         {title: 'Login',       icon: 'lock',            url: '/login'},
         {title: 'Registation', icon: 'face',            url: '/registration'},
         {title: 'Orders',      icon: 'bookmark_border', url: '/orders'},
-        {title: 'New ad',      icon: 'bug_report',         url: '/new'},
+        {title: 'New ad',      icon: 'bug_report',      url: '/new'},
         {title: 'My ads',      icon: 'list',            url: '/list'},
+        {title: 'Ad',          icon: 'list',            url: '/ad/:id'},
       ],
     }),
   }
