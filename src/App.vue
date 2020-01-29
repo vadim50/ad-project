@@ -34,7 +34,9 @@
       dark
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"/>
-      <v-toolbar-title>Ad</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" class="pointer">Ad</router-link>
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
       <v-btn depressed
@@ -124,8 +126,11 @@
     }),
   }
 </script>
-<style>
+<style scoped>
   a.v-btn, a.v-list-item{
     text-decoration: none;
+  }
+  .pointer{
+    cursor: pointer;
   }
 </style>

@@ -67,7 +67,6 @@
                   />
 
                   <v-text-field
-                    id="password"
                     label="Password"
                     name="password"
                     prepend-icon="lock"
@@ -77,7 +76,6 @@
                   />
 
                   <v-text-field
-                    id="confirm-password"
                     label="Confirm Password"
                     name="confirm-password"
                     prepend-icon="lock"
