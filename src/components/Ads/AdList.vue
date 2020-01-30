@@ -9,7 +9,7 @@
 				<h1 class="text--secondary">My Ads</h1>
 				<v-card
 					class="d-flax mb-3 pa-4"
-					v-for="ad in ads"
+					v-for="ad in myAds"
 					:key="ad.id"
 				>
 					<v-row>
@@ -48,40 +48,11 @@
 <script>
 	export default{
 		name: 'AdList',
-		 data () {
-      return {
-        ads: [
-          {
-          	title: 'First Ad',
-          	description: 'Hello I am description, Hello I am description ',
-          	promo: false,
-            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-            id: '1'
-          },
-          {
-          	title: 'Second Ad',
-          	description: 'Hello I am description',
-          	promo: true,
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-            id: '2'
-          },
-          {
-          	title: 'Third Ad',
-          	description: 'Hello I am description',
-          	promo: true,
-            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-            id: '3'
-          },
-          {
-          	title: 'Fourth Ad',
-          	description: 'Hello I am description',
-          	promo: false,
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-            id: '4'
-          },
-        ],
-      }
-    },
+		computed: {
+			myAds () {
+				return this.$store.getters.myAds
+			}
+		}
   }
 
 </script>
