@@ -3,8 +3,6 @@
 		<v-layout row>
 			<v-flex xs12>
 				<v-card
-					v-for="ad in ads"
-					:key="ad.id"
 				>
 					<v-responsive>
 						<v-img
@@ -32,41 +30,18 @@
 <script>
 	export default{
 		name: 'Ad',
-		data () {
-      return {
-        ads: [
-          {
-          	title: 'First Ad',
-          	description: 'Hello I am description',
-          	promo: false,
-            src: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
-            id: '1'
-          },
-          {
-          	title: 'Second Ad',
-          	description: 'Hello I am description',
-          	promo: true,
-            src: 'https://cdn.vuetifyjs.com/images/carousel/sky.jpg',
-            id: '2'
-          },
-          {
-          	title: 'Third Ad',
-          	description: 'Hello I am description',
-          	promo: true,
-            src: 'https://cdn.vuetifyjs.com/images/carousel/bird.jpg',
-            id: '3'
-          },
-          {
-          	title: 'Fourth Ad',
-          	description: 'Hello I am description',
-          	promo: false,
-            src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg',
-            id: '4'
-          },
-        ],
+		props: ['id'],
+    computed: {
+      ad () {
+        const id = this.id
+        return this.$store.getters.adById(id)
       }
-    },
+    }
   }	
 </script>
 
-<style></style>
+<style scoped>
+  a.v-btn, a.v-list-item{
+    text-decoration: none;
+  }
+</style>

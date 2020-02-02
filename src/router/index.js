@@ -19,6 +19,7 @@ export default new Router({
 		},
 		{
 			path: '/ad/:id',
+			props: true,
 			mame: 'ad',
 			component: Ad
 		},
@@ -47,7 +48,6 @@ export default new Router({
 			mame: 'orders',
 			component: Orders
 		},
-
-
-	]
+	],
+	mode: 'history'
 })

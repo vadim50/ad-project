@@ -57,4 +57,8 @@
 
 </script>
 
-<style></style>
+<style scoped>
+	a.v-btn, a.v-list-item{
+    text-decoration: none;
+  }
+</style>

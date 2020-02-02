@@ -103,8 +103,9 @@
 						title: this.title,
 						description: this.description,
 						promo: this.promo,
+                        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
 					}
-					console.log(ad)
+					this.$store.dispatch('createAd', ad)
 				}
 			}
 		}
