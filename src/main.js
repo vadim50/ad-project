@@ -28,14 +28,14 @@ new Vue({
   created () {
   // Initialize Firebase
   fb.initializeApp({
-    apiKey: 'AIzaSyBj2mAeImflPloG1kt5e_G-VpAG897vtas',
-    authDomain: 'its-ads-7b708.firebaseapp.com',
-    databaseURL: 'https://its-ads-7b708.firebaseio.com',
-    projectId: 'its-ads-7b708',
-    storageBucket: 'its-ads-7b708.appspot.com',
-    messagingSenderId: '508516642073',
-    appId: '1:508516642073:web:4a59fd7cb88b36d34b6988',
-    measurementId: 'G-NE5BXZP5V1'
+    apiKey: "AIzaSyD8tUqm-I_qKh7odu6IVla--uzs_YG1InM",
+    authDomain: "ads2020-4ef1f.firebaseapp.com",
+    databaseURL: "https://ads2020-4ef1f.firebaseio.com",
+    projectId: "ads2020-4ef1f",
+    storageBucket: "ads2020-4ef1f.appspot.com",
+    messagingSenderId: "754689629294",
+    appId: "1:754689629294:web:e9442e31b8bfa39d295a7f",
+    measurementId: "G-CZ3X4ET411"
   })
   }
 }).$mount('#app')
