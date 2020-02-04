@@ -44,6 +44,13 @@ export default {
 				commit('setError', error.message)
 				throw error
 			}
+		},
+		autoLoginUser ({commit}, payload){
+			commit('setUser', new User(payload.uid))
+		},
+		logoutUser ({commit}) {
+			fb.auth().signOut()
+			commit('setUser', null)
 		}
 	},
 	getters: {
@@ -51,7 +58,7 @@ export default {
 			return state.user
 		},
 		isUserLoggedIn (state) {
-			return this.state !== null
+			return state.user !== null
 		}
 	}
 }
