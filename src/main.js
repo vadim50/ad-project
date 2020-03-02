@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
+import BuyModalComponent from '@/components/Shared/BuyModal.vue'
 import router from './router/index.js'
 import store from './store'
 import * as fb from 'firebase/app'
@@ -12,7 +13,12 @@ import 'firebase/firestore';   // for cloud firestore
 import 'firebase/messaging';   // for cloud messaging
 import 'firebase/functions';   // for cloud functions
 
+
+
+
+
 Vue.use(VueRouter)
+Vue.component('app-buy-modal', BuyModalComponent)
 
 Vue.config.productionTip = false
 // Vue.use(vuetify, {
@@ -43,5 +49,9 @@ new Vue({
       this.$store.dispatch('autoLoginUser', user)
     }
   })
-  }
+
+  this.$store.dispatch('fetchAds')
+
+  },
+
 }).$mount('#app')

@@ -39,10 +39,18 @@
         		>
 				    <v-btn
 				      class="warning"
+              @click="triggerUpload"
 				    >
 				      Upload
 				      <v-icon right dark>mdi-cloud-upload</v-icon>
 				    </v-btn>
+            <input
+              ref="fileInput"
+              type="file"
+              style="display: none;"
+              accept="image/*"
+              @change="onFileChange"
+            >
         	</v-flex>
         </v-layout>
         <v-layout row>
@@ -50,7 +58,8 @@
         		xs12
         		>
 				    <v-img
-							src="https://cdn.vuetifyjs.com/images/carousel/sky.jpg"
+            v-if="src"
+							:src="src"
 							height="100"/>
         	</v-flex>
         </v-layout>
@@ -71,7 +80,8 @@
         		xs12
         		>
         		<v-btn
-        		:disabled="!valid"
+            :loading="loading"
+        		:disabled="!valid || !image || loading"
         			color="success"
         			@click="createAd"
         		>
@@ -92,22 +102,45 @@
 				title: '',
 				description: '',
 				promo: false,
-				valid: false
+				valid: false,
+        image: null,
+        src: ''
 			}
 		},
+    computed: {
+      loading () {
+        return this.$store.getters.loading
+      }
+    },
 		methods: {
 			createAd () {
-				if(this.$refs.form.validate()) {
+				if(this.$refs.form.validate() && this.image) {
 					//logic
 					const ad = {
 						title: this.title,
 						description: this.description,
 						promo: this.promo,
-                        src: 'https://cdn.vuetifyjs.com/images/carousel/planet.jpg'
+            image: this.image
 					}
 					this.$store.dispatch('createAd', ad)
+          .then(() => {
+            this.$router.push('/list')
+          })
 				}
-			}
+			},
+      triggerUpload () {
+        this.$refs.fileInput.click()
+      },
+      onFileChange () {
+        const file = event.target.files[0]
+
+        const reader = new FileReader()
+        reader.onload = e => {
+          this.src = reader.result
+        }
+        reader.readAsDataURL(file)
+        this.image = file
+      }
 		}
 	}
 </script>

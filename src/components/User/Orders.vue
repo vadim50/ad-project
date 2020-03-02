@@ -1,10 +1,19 @@
 <template>
 	<v-container>
 		<v-layout row>
+			<v-flex xs12 class="text-center pt-5" v-if="loading">
+						<v-progress-circular
+				      :size="100"
+				      :width="4"
+				      color="primary"
+				      indeterminate
+    				></v-progress-circular>
+			</v-flex>
 			<v-flex
 				xs12
 				sm6
 				offset-sm3
+				v-else-if="!loading && orders.length !== 0"
 				>
 				<h1 class="text--secondary pb-3">Orders</h1>
 				<v-list
@@ -44,6 +53,13 @@
 		      </v-list-item-group>
 		    </v-list>
 			</v-flex>
+			<v-flex
+				xs12
+				class="text-center"
+				v-else
+			>
+				<h1 class="text--secondary">You Have Not Any Orders!</h1>
+			</v-flex>
 		</v-layout>
 	</v-container>
 </template>
@@ -51,17 +67,26 @@
 <script>
 	export default{
 		name: 'Orders',
-		data () {
-			return {
-				orders: [
-					{id: 'o1', name: 'Vadim', phone: '8-909-45-9-45-05',adId: 'a1', done: false}
-				]
+		computed: {
+			loading () {
+				return this.$store.getters.loading
+			},
+			orders () {
+				return this.$store.getters.orders
 			}
 		},
 		methods: {
 			markDown(order){
-				order.done = true
+				this.$store.dispatch('markOrderDone', order.id)
+				.then(() => {
+					order.done = true
+				})
+				.catch(() => {})
+				
 			}
+		},
+		created() {
+			this.$store.dispatch('fetchOrders')
 		}
 	}
 </script>
